@@ -8,7 +8,13 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	stack_t *current = *stack;
+
 	(void)line_number;
-	printf("Pall opcode called\n");
+
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
 }
