@@ -31,43 +31,12 @@ int main(int argc, char *argv[])
 
 	while ((read = getline(&line, &len, file)) != -1)
 	{
-		char *opcode;
-		char *argument;
-
 		line_number++;
-		opcode = strtok(line, " \t\n");
-		if (opcode == NULL || *opcode == '#')
-			continue;
-
-		argument = strtok(NULL, " \t\n");
-		if (strcmp(opcode, "push") == 0 && argument == NULL)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			fclose(file);
-			free(line);
-			return (EXIT_FAILURE);
-		}
-
-		if (strcmp(opcode, "push") == 0)
-		{
-			push(&stack, line_number);
-		}
-		else if (strcmp(opcode, "pall") == 0)
-		{
-			pall(&stack, line_number);
-		}
-		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-			fclose(file);
-			free(line);
-			return (EXIT_FAILURE);
-		}
+		printf("%s", line);
 	}
 
 	fclose(file);
 	if (line)
 		free(line);
-
 	return (EXIT_SUCCESS);
-
+}
