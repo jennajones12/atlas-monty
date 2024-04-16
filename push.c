@@ -1,4 +1,27 @@
 #include "monty.h"
+#include <stdbool.h>
+#include <ctype.h>
+
+/**
+ * is_numeric - Checks if a string represents a numeric value
+ * @str: The string to check
+ *
+ * Return: true if the string is numeric, false otherwise
+ */
+bool is_numeric(const char *str)
+{
+	if (str == NULL || *str == '\0')
+		return (false);
+
+	while (*str != '\0')
+	{
+		if (!isdigit(*str))
+			return (false);
+		str++;
+	}
+
+	return (true);
+}
 
 /**
  * push - Pushes an element onto the stack
