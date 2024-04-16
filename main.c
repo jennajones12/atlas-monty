@@ -11,11 +11,6 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t read;
-	stack_t *stack = NULL;
-	unsigned int line_number = 0;
 
 	if (argc != 2)
 	{
@@ -30,12 +25,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, file)) != -1)
-	{
-		line_number++;
-	}
-
-	free(line);
 	fclose(file);
+
 	return (0);
 }
