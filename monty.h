@@ -35,16 +35,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int is_int(char *arg);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
-/**
- * process_line - Parses a line from the input file and executes the opcode
- * @line: The line to be parsed
- * @line_number: The line number in the input file
- * @stack: Pointer to the top of the stack
- * Return: void
- */
-void process_line(char *line, unsigned int line_number, stack_t **stack);
-
-#endif /* MONTY_H */
+#endif
