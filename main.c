@@ -1,13 +1,5 @@
 #include "monty.h"
 
-/**
- * main - Entry point of the Monty interpreter
- * @argc: Number of command-line arguments
- * @argv: Array of command-line argument strings
- *
- * Return: EXIT_SUCCESS if successful, EXIT_FAILURE on failure
- */
-
 int main(int argc, char *argv[])
 {
 	FILE *file;
@@ -15,6 +7,7 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	ssize_t read;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -32,11 +25,12 @@ int main(int argc, char *argv[])
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		line_number++;
-		printf("%s", line);
+		process_line(line, line_number, &stack);
 	}
 
 	fclose(file);
 	if (line)
 		free(line);
+
 	return (EXIT_SUCCESS);
 }
